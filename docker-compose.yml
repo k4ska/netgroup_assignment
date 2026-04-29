@@ -26,8 +26,6 @@ services:
     environment:
       ASPNETCORE_URLS: http://+:5000
       ConnectionStrings__Default: "Host=db;Port=5432;Database=events_db;Username=postgres;Password=postgres"
-      Admin__Email: "admin@admin.com"
-      Admin__Password: "admin123"
       Jwt__Secret: "super-secret-jwt-key-change-in-production-min32chars"
       Jwt__ExpiresInHours: "8"
     depends_on:
