@@ -20,7 +20,12 @@ const submit = async () => {
     setToken(data.token)
     emit('close')
   } catch (err: any) {
-    error.value = err.message || 'Login failed'
+    const status = err?.status || err?.statusCode || err?.response?.status
+    if (status === 401) {
+      error.value = 'Login failed - wrong credentials'
+    } else {
+      error.value = err?.message || 'Login failed'
+    }
   } finally {
     loading.value = false
   }
